@@ -10,15 +10,19 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
+       if (GameManager.instance.IsGameEnded())
+            return;
+
         if (_timeLeft > 0)
         {
             _timeLeft -= Time.deltaTime;
-            _timerText.text = "Время: " + Mathf.Round(_timeLeft).ToString();
+            if (_timerText != null)
+                _timerText.text = "Время: " + Mathf.Round(_timeLeft).ToString();
         }
         else
         {
-            Debug.Log("Время вышло, вы проиграли!");
             _timeLeft = 0;
+            GameManager.instance.EndGame(false); 
         }
     }
 }

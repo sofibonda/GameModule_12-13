@@ -27,10 +27,11 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.AddForce(moveDirection * _moveForce);
 
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
+         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
